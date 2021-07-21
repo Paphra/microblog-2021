@@ -1,0 +1,84 @@
+2021-07-20 21:25:31,795 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:54]
+2021-07-21 00:36:31,250 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:54]
+2021-07-21 00:36:44,501 ERROR: Exception on /edit_profile [POST] [in d:\py\microblog\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.InterfaceError: Error binding parameter 0 - probably unsupported type.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\py\microblog\app\routes.py", line 105, in edit_profile
+    if form.validate_on_submit():
+  File "d:\py\microblog\venv\lib\site-packages\flask_wtf\form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "d:\py\microblog\venv\lib\site-packages\wtforms\form.py", line 318, in validate
+    return super(Form, self).validate(extra)
+  File "d:\py\microblog\venv\lib\site-packages\wtforms\form.py", line 150, in validate
+    if not field.validate(self, extra):
+  File "d:\py\microblog\venv\lib\site-packages\wtforms\fields\core.py", line 226, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "d:\py\microblog\venv\lib\site-packages\wtforms\fields\core.py", line 246, in _run_validation_chain
+    validator(form, self)
+  File "D:\py\microblog\app\forms.py", line 40, in validate_username
+    user = User.query.filter_by(username=username).first()
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2761, in first
+    return self.limit(1)._iter().first()
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2845, in _iter
+    result = self.session.execute(
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1689, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1452, in _execute_clauseelement
+    ret = self._execute_context(
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _handle_dbapi_exception
+    util.raise_(
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.InterfaceError: (sqlite3.InterfaceError) Error binding parameter 0 - probably unsupported type.
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
+FROM user 
+WHERE user.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: (<wtforms.fields.core.StringField object at 0x000001FEE9FBAE20>, 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/rvf5)
+2021-07-21 00:42:55,438 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:54]
+2021-07-21 17:16:16,785 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:54]
+2021-07-21 17:16:36,115 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:54]
+2021-07-21 20:51:22,612 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:54]
+2021-07-21 20:51:27,919 ERROR: Exception on /user/johns [GET] [in d:\py\microblog\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "d:\py\microblog\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\py\microblog\app\routes.py", line 96, in user
+    form = EmptyForm()
+TypeError: EmptyForm() missing 1 required positional argument: 'FlaskForm'
+2021-07-21 20:53:01,040 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:54]
