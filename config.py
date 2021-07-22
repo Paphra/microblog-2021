@@ -17,5 +17,4 @@ class Config(object):
     ADMINS = ['paphra.me@gmail.com']
 
     # Pagination
-    POSTS_PER_PAGE = 3
-    
+    POSTS_PER_PAGE = os.environ.get('POSTS_PER_PAGE') or 25
