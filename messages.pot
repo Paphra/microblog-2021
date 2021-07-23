@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-07-23 00:51+0300\n"
+"POT-Creation-Date: 2021-07-23 14:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,60 +77,68 @@ msgstr ""
 msgid "Request Password Reset"
 msgstr ""
 
-#: app/routes.py:29
+#: app/routes.py:38
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/routes.py:73
+#: app/routes.py:82
 msgid "Invalid Username or Password!"
 msgstr ""
 
-#: app/routes.py:104
+#: app/routes.py:113
 msgid "Congratulations, you are now a registered user!"
 msgstr ""
 
-#: app/routes.py:141
+#: app/routes.py:150
 msgid "Your Changes have been saved."
 msgstr ""
 
-#: app/routes.py:160
+#: app/routes.py:169
 #, python-format
 msgid "User %(username)s not Found."
 msgstr ""
 
-#: app/routes.py:163
+#: app/routes.py:172
 msgid "You cannot follow yourself!"
 msgstr ""
 
-#: app/routes.py:167
+#: app/routes.py:176
 #, python-format
 msgid "You are now following %(username)s!"
 msgstr ""
 
-#: app/routes.py:179
+#: app/routes.py:188
 #, python-format
 msgid "User %(username)s not Found!"
 msgstr ""
 
-#: app/routes.py:182
+#: app/routes.py:191
 msgid "You cannot unfollow yourself!"
 msgstr ""
 
-#: app/routes.py:186
+#: app/routes.py:195
 #, python-format
 msgid "You are nolonger following %(username)s!"
 msgstr ""
 
-#: app/routes.py:201
+#: app/routes.py:210
 msgid "Check your email for the instructions to reset your password!"
 msgstr ""
 
-#: app/routes.py:215
+#: app/routes.py:224
 msgid "Invalid or Expired Password Reset Link!"
 msgstr ""
 
-#: app/routes.py:222
+#: app/routes.py:231
 msgid "Your Password has been reset."
+msgstr ""
+
+#: app/translate.py:8
+msgid "Error: the translation service is not configured."
+msgstr ""
+
+#: app/translate.py:22
+msgid "Error: the translation service failed."
 msgstr ""
 
 #: app/templates/404.html:3
@@ -140,6 +148,14 @@ msgstr ""
 #: app/templates/_post.html:14
 #, python-format
 msgid "%(username)s said %(when)s"
+msgstr ""
+
+#: app/templates/_post.html:20
+msgid "Translate"
+msgstr ""
+
+#: app/templates/base.html:65
+msgid "Error: Could not contact server."
 msgstr ""
 
 #: app/templates/index.html:5
