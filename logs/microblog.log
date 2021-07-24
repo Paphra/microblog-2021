@@ -79,3 +79,7 @@ TypeError: 'language' is an invalid keyword argument for Post
 2021-07-23 13:40:46,439 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:64]
 2021-07-23 13:41:48,196 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:64]
 2021-07-23 13:47:37,074 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:64]
+2021-07-24 12:06:47,567 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:86]
+2021-07-24 12:07:09,938 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:86]
+2021-07-24 12:21:28,609 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:86]
+2021-07-24 12:26:25,700 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:86]
