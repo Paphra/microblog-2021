@@ -3,6 +3,7 @@ import unittest
 from app import create_app, db
 from app.models import User, Post
 from config import Config
+from app.translate import translate
 
 class TestConfig(Config):
     TESTING = True
@@ -86,6 +87,32 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(f2, [p2, p3])
         self.assertEqual(f3, [p3, p4])
         self.assertEqual(f4, [p4])
+
+class TranslationCase(unittest.TestCase):
+    def setUp(self):
+        self.app = create_app(TestConfig)
+        self.app_context = self.app.app_context()
+        self.app_context.push()
+        db.create_all()
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+        self.app_context.pop()
+
+    def test_language_translate_hangul_to_english(self):
+        text = "아멘 감사합니다"
+        final = "Thank you Amen"
+        src_lang = 'ko'
+        dest_lang = 'en'
+        self.assertEqual(translate(text, src_lang, dest_lang), final)
+
+    def test_language_translate_english_to_hangul(self):
+        text = "Thank you Amen"
+        final = "아멘 감사합니다"
+        src_lang = 'en'
+        dest_lang = 'ko'
+        self.assertEqual(translate(text, src_lang, dest_lang), final)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -20,7 +20,7 @@ moment = Moment()
 babel = Babel()
 
 login = LoginManager()
-login.login_view = 'login'
+login.login_view = 'auth.login'
 login.login_message = _l('Please log in to access this page.')
 
 def create_app(config_class=Config):
@@ -66,27 +66,26 @@ def create_app(config_class=Config):
             mail_handler.setLevel(logging.ERROR)
             app.logger.addHandler(mail_handler)
 
-            # File Based Logging
-            if not os.path.exists('logs'):
-                os.mkdir('logs')
-            file_handler = RotatingFileHandler(
-                'logs/microblog.log',
-                maxBytes=10240,
-                backupCount=10
+        # File Based Logging
+        if not os.path.exists('logs'):
+            os.mkdir('logs')
+        file_handler = RotatingFileHandler(
+            'logs/microblog.log',
+            maxBytes=10240,
+            backupCount=10
+        )
+        file_handler.setFormatter(
+            logging.Formatter(
+                '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
             )
-            file_handler.setFormatter(
-                logging.Formatter(
-                    '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'
-                )
-            )
-            file_handler.setLevel(logging.INFO)
-            app.logger.addHandler(file_handler)
+        )
+        file_handler.setLevel(logging.INFO)
+        app.logger.addHandler(file_handler)
 
-            app.logger.setLevel(logging.INFO)
-            app.logger.info('Microblog startup')
-
+        app.logger.setLevel(logging.INFO)
+        app.logger.info('Microblog startup')
         
-        return app
+    return app
 
 
 @babel.localeselector
