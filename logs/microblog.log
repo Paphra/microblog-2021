@@ -47,3 +47,4 @@ Traceback (most recent call last):
 KeyError: 'q'
 2021-07-26 10:05:33,773 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
 2021-07-26 10:08:24,919 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
+2021-07-26 10:08:57,712 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
