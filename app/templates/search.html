@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ _('Search Reasults') }}</h1>
+    <p>{{ _('Searching for "%(q)s"', q=g.search_form.q.data) }}</p>
+    {% if total > 0 %}
+        <p>
+            {{ 
+                _(
+                    'Showing %(show_from)d to %(show_to)d of %(total)s Results', 
+                    show_from=show_from,
+                    show_to=show_to,
+                    total=total
+                ) 
+            }}
+        </p>
+    {% else %}
+        <p>{{ _('No Results Found!') }}</p>
+    {% endif %}
+    {% for post in posts %}
+        {% include 'components/_post.html' %}
+    {% endfor %}
+    {% include 'components/_pagination.html' %}
+{% endblock app_content %}

@@ -1,12 +1,13 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, jsonify, g, current_app
-from flask_login import current_user, login_user, logout_user, login_required
-from werkzeug.urls import url_parse
+from flask import render_template, flash, redirect, \
+	url_for, request, jsonify, g, current_app
+from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from langdetect import detect, LangDetectException
 from app import db
 from app.main import bp
-from app.main.forms import EditProfileForm, EmptyForm, PostForm
+from app.main.forms import EditProfileForm, EmptyForm, \
+	PostForm, SearchForm
 from app.models import User, Post
 from app.translate import translate
 
@@ -15,6 +16,7 @@ def before_request():
 	if current_user.is_authenticated:
 		current_user.last_seen = datetime.utcnow()
 		db.session.commit()
+		g.search_form = SearchForm()
 	
 	g.locale = str(get_locale())
 
@@ -155,3 +157,32 @@ def translate_text():
 			request.form['dest_language']
 		)
 	})
+
+@bp.route('/search')
+@login_required
+def search():
+	if not g.search_form.validate():
+		return redirect(url_for('main.explore'))
+	page = request.args.get('page', 1, type=int)
+	per_page = current_app.config['POSTS_PER_PAGE']
+	q = g.search_form.q.data
+	posts, total = Post.search(q, page, per_page)
+
+	next_url = url_for('main.search', q=q, page=page + 1) \
+		if total > page * per_page else None
+	prev_url = url_for('main.search', q=q, page=page - 1) \
+		if page > 1 else None
+	
+	show_from = (page - 1) * per_page if page > 1 else 1
+	show_to = (show_from + per_page) if (show_from + per_page) < total else total
+
+	return render_template(
+		'search.html',
+		title=_('Search'),
+		total=total,
+		show_from=show_from,
+		show_to=show_to,
+		posts=posts,
+		next_url=next_url,
+		prev_url=prev_url
+	)

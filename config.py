@@ -20,6 +20,9 @@ class Config(object):
     ADMINS = ['paphra.me@gmail.com']
 
     # Pagination
-    POSTS_PER_PAGE = os.environ.get('POSTS_PER_PAGE') or 25
+    POSTS_PER_PAGE = int(os.environ.get('POSTS_PER_PAGE') or 25)
     LANGUAGES = ['en', 'es']
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
+
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
+    
