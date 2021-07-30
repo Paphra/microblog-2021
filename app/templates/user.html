@@ -16,6 +16,13 @@
                     {{ _('%(count)d followers', count=user.followers.count()) }}, 
                     {{ _('%(count)d following.', count=user.followed.count())}}
                 </p>
+                {% if user != current_user %}
+                    <p>
+                        <a href="{{ url_for('main.send_message', recipient=user.username) }}">
+                            {{ _('Send Private Message') }}
+                        </a>
+                    </p>
+                {% endif %}
                 {% if current_user == user %}
                     <small style="font-size: 12px;">
                         <a href="{{ url_for('main.edit_profile') }}">{{ _('Edit your profile') }}</a>

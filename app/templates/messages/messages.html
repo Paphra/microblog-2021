@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ _('Messages') }}</h1>
+    {% for post in messages %}
+        {% include 'components/_post.html' %}
+    {% endfor %}
+    {% include 'components/_pagination.html' %}
+{% endblock app_content %}

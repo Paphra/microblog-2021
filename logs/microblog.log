@@ -1,4 +1,41 @@
-2021-07-26 10:03:46,897 ERROR: Exception on /search [GET] [in d:\py\microblog\venv\lib\site-packages\flask\app.py:1454]
+2021-07-30 15:21:53,616 ERROR: Exception on /index [POST] [in d:\py\microblog\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 445, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 440, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 1347, in getresponse
+    response.begin()
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 251, in perform_request
+    response = self.pool.urlopen(
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\util\retry.py", line 507, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 447, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 336, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=9200): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,51 +47,100 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "d:\py\microblog\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "D:\py\microblog\app\main\routes.py", line 179, in search
-    return render_template(
-  File "d:\py\microblog\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "d:\py\microblog\venv\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "d:\py\microblog\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "d:\py\microblog\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "D:\py\microblog\app\templates\search.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "D:\py\microblog\app\templates\base.html", line 1, in top-level template code
-    {% extends "bootstrap/base.html" %}
-  File "d:\py\microblog\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "d:\py\microblog\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "d:\py\microblog\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "d:\py\microblog\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
-    {% block content -%}
-  File "D:\py\microblog\app\templates\base.html", line 57, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "D:\py\microblog\app\templates\search.html", line 5, in block 'app_content'
-    <p>{{ _('Searching for "%(q)s"')}}</p>
-  File "d:\py\microblog\venv\lib\site-packages\jinja2\ext.py", line 168, in _gettext_alias
-    return __context.call(__context.resolve("gettext"), *args, **kwargs)
-  File "d:\py\microblog\venv\lib\site-packages\jinja2\ext.py", line 180, in gettext
-    return rv % variables  # type: ignore
-  File "d:\py\microblog\venv\lib\site-packages\markupsafe\__init__.py", line 109, in __mod__
-    return self.__class__(super().__mod__(arg))
-  File "d:\py\microblog\venv\lib\site-packages\markupsafe\__init__.py", line 263, in __getitem__
-    return _MarkupEscapeHelper(self.obj[item], self.escape)
-KeyError: 'q'
-2021-07-26 10:05:33,773 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 10:08:24,919 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 10:08:57,712 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 17:10:52,028 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 17:11:32,022 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 17:25:16,985 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 17:25:37,429 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 17:25:49,492 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-26 17:26:26,102 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-27 00:10:49,621 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-27 00:11:20,810 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-27 00:11:39,887 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
-2021-07-27 00:12:53,328 INFO: Microblog startup [in D:\py\microblog\app\__init__.py:90]
+  File "D:\py\microblog\app\main\routes.py", line 35, in index
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 839, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\event\attr.py", line 256, in __call__
+    fn(*args, **kw)
+  File "D:\py\microblog\app\models.py", line 41, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "D:\py\microblog\app\search.py", line 9, in add_to_index
+    current_app.elasticsearch.index(
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\client\utils.py", line 168, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\client\__init__.py", line 406, in index
+    return self.transport.perform_request(
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\transport.py", line 415, in perform_request
+    raise e
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\transport.py", line 381, in perform_request
+    status, headers_response, data = connection.perform_request(
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 265, in perform_request
+    raise ConnectionTimeout("TIMEOUT", str(e), e)
+elasticsearch.exceptions.ConnectionTimeout: ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='localhost', port=9200): Read timed out. (read timeout=10))
+2021-07-30 15:22:08,738 ERROR: Exception on /index [POST] [in d:\py\microblog\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 445, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 440, in _make_request
+    httplib_response = conn.getresponse()
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 1347, in getresponse
+    response.begin()
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 307, in begin
+    version, status, reason = self._read_status()
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\http\client.py", line 268, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "C:\Users\paphr\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 251, in perform_request
+    response = self.pool.urlopen(
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\util\retry.py", line 507, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 447, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "d:\py\microblog\venv\lib\site-packages\urllib3\connectionpool.py", line 336, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='localhost', port=9200): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "d:\py\microblog\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "d:\py\microblog\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\py\microblog\app\main\routes.py", line 35, in index
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 839, in commit
+    self.session.dispatch.after_commit(self.session)
+  File "d:\py\microblog\venv\lib\site-packages\sqlalchemy\event\attr.py", line 256, in __call__
+    fn(*args, **kw)
+  File "D:\py\microblog\app\models.py", line 41, in after_commit
+    add_to_index(obj.__tablename__, obj)
+  File "D:\py\microblog\app\search.py", line 9, in add_to_index
+    current_app.elasticsearch.index(
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\client\utils.py", line 168, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\client\__init__.py", line 406, in index
+    return self.transport.perform_request(
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\transport.py", line 415, in perform_request
+    raise e
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\transport.py", line 381, in perform_request
+    status, headers_response, data = connection.perform_request(
+  File "d:\py\microblog\venv\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 265, in perform_request
+    raise ConnectionTimeout("TIMEOUT", str(e), e)
+elasticsearch.exceptions.ConnectionTimeout: ConnectionTimeout caused by - ReadTimeoutError(HTTPConnectionPool(host='localhost', port=9200): Read timed out. (read timeout=10))
